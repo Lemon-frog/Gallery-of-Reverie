@@ -14,6 +14,7 @@
 
 <!-- HERO -->
 <section class="hero spotlight-container">
+    <div class="curtain"></div>
     <div class="spotlight"></div>
 
     <div class="frame spin-in">
@@ -30,10 +31,10 @@
     <h2>My Collection of Poems</h2>
 
     <div class="poem-grid">
-        <div class="poem-frame">Whispers of the Moon</div>
-        <div class="poem-frame">Eclipsed Heart</div>
-        <div class="poem-frame">Shadows of Time</div>
-        <div class="poem-frame">Eternal Longing</div>
+        <div class="poem-frame" data-poem-id="whispers">Whispers of the Moon</div>
+        <div class="poem-frame" data-poem-id="eclipsed">Eclipsed Heart</div>
+        <div class="poem-frame" data-poem-id="shadows">Shadows of Time</div>
+        <div class="poem-frame" data-poem-id="longing">Eternal Longing</div>
     </div>
 
     <div class="scroll-down">
@@ -43,5 +44,15 @@
 </section>
 
 <script src="script.js"></script>
+
+<!-- MODAL -->
+<div class="modal" id="poem-modal">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h3 class="modal-title"></h3>
+        <p class="modal-body"></p>
+    </div>
+</div>
+
 </body>
 </html>
