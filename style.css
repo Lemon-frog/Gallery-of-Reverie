@@ -1,0 +1,262 @@
+:root {
+    --gold: #d4af37;
+    --gold-soft: #f2e2a8;
+    --dark: #0a0a0a;
+    --paper: #f0f0f0;
+}
+
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ---------------- BODY / WALL ---------------- */
+body {
+    font-family: 'Playfair Display', serif;
+    background:
+        linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.85)),
+        url("assets/bg.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    color: var(--paper);
+    overflow-x: hidden;
+}
+
+/* ---------------- HERO ---------------- */
+.hero {
+    min-height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem 1rem;
+
+    background:
+        radial-gradient(circle at center, rgba(255,215,150,0.15), transparent 60%),
+        url("assets/hero.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+/* ---------------- SPOTLIGHT ---------------- */
+.spotlight-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.spotlight {
+    position: absolute;
+    top: -20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 140%;
+    height: 120%;
+
+    background: radial-gradient(
+        ellipse at top,
+        rgba(255,220,150,0.35) 0%,
+        rgba(255,220,150,0.2) 30%,
+        rgba(255,220,150,0.08) 55%,
+        transparent 70%
+    );
+
+    mix-blend-mode: screen;
+    filter: blur(14px);
+    pointer-events: none;
+
+    animation: lightPulse 8s ease-in-out infinite;
+}
+
+@keyframes lightPulse {
+    0%, 100% { opacity: 0.85; }
+    50% { opacity: 1; }
+}
+
+/* ---------------- FRAME ---------------- */
+.frame {
+    position: relative;
+    padding: 2.5rem 4rem;
+    border-radius: 14px;
+
+    background:
+        linear-gradient(145deg, #1a1a1a, #0a0a0a),
+        url("assets/frame.webp");
+    background-size: cover;
+    background-blend-mode: overlay;
+
+    border: 6px solid var(--gold);
+
+    box-shadow:
+        0 0 0 6px rgba(212,175,55,0.35),
+        0 0 45px rgba(255,215,120,0.45),
+        inset 0 0 25px rgba(0,0,0,0.7);
+}
+
+/* Gold imperfections */
+.frame::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 14px;
+
+    background:
+        repeating-linear-gradient(
+            120deg,
+            rgba(255,255,255,0.08) 0px,
+            rgba(255,255,255,0.08) 1px,
+            transparent 1px,
+            transparent 3px
+        );
+
+    mix-blend-mode: overlay;
+    opacity: 0.35;
+    pointer-events: none;
+}
+
+/* Inner plate */
+.frame-inner {
+    padding: 2.2rem 3rem;
+    border: 2px solid rgba(242,226,168,0.4);
+    background: linear-gradient(180deg, #1a1a1a, #0b0b0b);
+    text-align: center;
+}
+
+/* Title */
+.frame-inner h1 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    letter-spacing: 3px;
+    color: var(--gold);
+    text-shadow:
+        1px 1px 0 #7a6420,
+        -1px -1px 0 #f7ebba;
+}
+
+.subtitle {
+    display: block;
+    margin-top: 0.6rem;
+    font-style: italic;
+    color: var(--gold-soft);
+}
+
+/* Spin intro */
+.spin-in {
+    animation: spinIn 1.6s ease-out forwards;
+}
+
+@keyframes spinIn {
+    from {
+        transform: rotateY(360deg) scale(0.6);
+        opacity: 0;
+    }
+    to {
+        transform: rotateY(0deg) scale(1);
+        opacity: 1;
+    }
+}
+
+/* ---------------- DUST ---------------- */
+.dust {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.dust::before,
+.dust::after {
+    content: "";
+    position: absolute;
+    width: 120%;
+    height: 120%;
+    background:
+        radial-gradient(circle, rgba(255,255,255,0.15) 1px, transparent 2px);
+    background-size: 120px 120px;
+    animation: dustFloat 60s linear infinite;
+    opacity: 0.15;
+}
+
+.dust::after {
+    animation-duration: 90s;
+    background-size: 180px 180px;
+    opacity: 0.1;
+}
+
+@keyframes dustFloat {
+    from { transform: translateY(0); }
+    to { transform: translateY(-200px); }
+}
+
+/* ---------------- GALLERY ---------------- */
+.gallery {
+    background:
+        linear-gradient(to bottom, rgba(255,255,255,0.9), rgba(220,220,220,0.95)),
+        url("assets/bg.jpg");
+    background-size: cover;
+    padding: 5rem 6%;
+    text-align: center;
+    color: #111;
+}
+
+.gallery h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 2.3rem;
+    margin-bottom: 4rem;
+    color: #7a5c12;
+}
+
+/* Grid */
+.poem-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 360px);
+    gap: 3rem 6rem;
+    justify-content: center;
+}
+
+/* Poem frames */
+.poem-frame {
+    width: 360px;
+    height: 200px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        linear-gradient(180deg, #111, #000),
+        repeating-linear-gradient(
+            90deg,
+            rgba(255,255,255,0.04) 0px,
+            rgba(255,255,255,0.04) 1px,
+            transparent 1px,
+            transparent 4px
+        );
+
+    border: 8px solid var(--gold);
+    font-family: 'Cinzel', serif;
+    letter-spacing: 2px;
+
+    box-shadow: 0 18px 35px rgba(0,0,0,0.35);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.poem-frame:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 26px 45px rgba(212,175,55,0.35);
+}
+
+/* Scroll indicator */
+.scroll-down {
+    margin-top: 4rem;
+    font-family: 'Cinzel', serif;
+    letter-spacing: 3px;
+    color: #6a5a2a;
+}
+
+.diamond {
+    width: 12px;
+    height: 12px;
+    background: var(--gold);
+    transform: rotate(45deg);
+    margin: 1rem auto 0;
+}
